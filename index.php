@@ -410,6 +410,6 @@
         });
     </script>
     <!-- Voyn Widget -->
-    <script src="https://lead.ahmetcotur.com/widget/widget.js?v=4" data-site-key="<?= getenv('LEADS_SITE_KEY') ?: 'site_ahmet_9912' ?>"></script>
+    <script src="https://lead.ahmetcotur.com/widget/widget.js?v=5" data-website-uuid="<?= getenv('LEADS_WEBSITE_UUID') ?: '3187cc6b-f72c-4cb9-9a12-ea3d1d2e90c9' ?>"></script>
 </body>
 </html> 

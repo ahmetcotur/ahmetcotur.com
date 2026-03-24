@@ -392,6 +392,6 @@
         });
     </script>
     <!-- Voyn Widget -->
-    <script src="/widget/widget.js?v=4" data-site-key="site_ahmet_9912"></script>
+    <script src="/widget/widget.js?v=4" data-site-key="<?= getenv('LEADS_SITE_KEY') ?: 'site_ahmet_9912' ?>"></script>
 </body>
 </html> 

@@ -349,6 +349,24 @@
                 const formData = new FormData(event.target);
                 const data = Object.fromEntries(formData.entries());
                 
+                // Send Lead to CRM
+                fetch('https://lead.ahmetcotur.com/api/leads/form', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        site_key: 'site_ahmet_9912',
+                        business_name: data.name,
+                        email: data.email,
+                        phone: data.phone,
+                        details: {
+                            service: data.service,
+                            date: data.date,
+                            location: data.location,
+                            details: data.details
+                        }
+                    })
+                }).catch(err => console.error('CRM Lead error:', err));
+
                 // Create WhatsApp message
                 const message = `Merhaba, ${data.service} hizmeti için bilgi almak istiyorum.%0A%0A` +
                     `👤 *Kişisel Bilgilerim*%0A` +
@@ -392,6 +410,6 @@
         });
     </script>
     <!-- Voyn Widget -->
-    <script src="/widget/widget.js?v=2" data-site-key="ahmetcotur_com"></script>
+    <script src="https://lead.ahmetcotur.com/widget/widget.js" data-site-key="site_ahmet_9912"></script>
 </body>
 </html> 

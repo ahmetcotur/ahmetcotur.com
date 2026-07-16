@@ -5,9 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = (
     "index.html",
-    "index.php",
     "index-en.html",
-    "index-en.php",
 )
 
 
@@ -35,20 +33,32 @@ class GalleryLinksTest(unittest.TestCase):
         )
 
     def test_stylesheet_url_busts_immutable_cache(self):
-        expected = 'href="style.css?v=20260716-gallery-links"'
+        expected = 'href="style.css?v=20260716-portfolio-v1"'
         for page_name in PAGES:
             page = (ROOT / page_name).read_text(encoding="utf-8")
             with self.subTest(page=page_name):
                 self.assertIn(expected, page)
 
-    def test_social_media_package_link_is_preserved(self):
+    def test_socialkas_link_is_preserved(self):
         for page_name in PAGES:
             page = (ROOT / page_name).read_text(encoding="utf-8")
             with self.subTest(page=page_name):
                 self.assertIn(
-                    "https://www.socialkas.com/sosyal-medya-paketleri/",
+                    "https://www.socialkas.com",
                     page,
                 )
+
+    def test_sensitive_bank_details_are_not_public(self):
+        forbidden_fragments = ("IBAN", "Ziraat Bank", "bankModal")
+        for page_name in PAGES:
+            page = (ROOT / page_name).read_text(encoding="utf-8")
+            with self.subTest(page=page_name):
+                for fragment in forbidden_fragments:
+                    self.assertNotIn(fragment, page)
+
+    def test_legacy_php_endpoints_are_removed(self):
+        for path in ("index.php", "index-en.php", "get_photos.php"):
+            self.assertFalse((ROOT / path).exists(), path)
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ class GalleryLinksTest(unittest.TestCase):
         )
 
     def test_stylesheet_url_busts_immutable_cache(self):
-        expected = 'href="style.css?v=20260716-portfolio-v1"'
+        expected = 'href="style.css?v=20260716-motion-v3"'
         for page_name in PAGES:
             page = (ROOT / page_name).read_text(encoding="utf-8")
             with self.subTest(page=page_name):

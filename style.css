@@ -276,6 +276,7 @@ img { display: block; width: 100%; }
 .contact .eyebrow { margin-bottom: 40px; }
 .contact h2 { margin: 0; max-width: 1150px; font-size: clamp(60px, 9.2vw, 142px); font-weight: 500; letter-spacing: -.07em; line-height: .82; }
 .contact h2 em { display: block; color: var(--accent); font-family: var(--serif); font-weight: 400; }
+.contact-note { max-width: 720px; margin: 34px 0 0; color: #d6d8d2; font-size: clamp(18px, 1.7vw, 26px); line-height: 1.35; }
 .contact-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 64px; }
 .secondary-link { min-height: 54px; display: inline-flex; align-items: center; padding: 0 19px; border: 1px solid var(--line); font-size: 14px; }
 .site-footer { width: min(100%, 1400px); margin: 90px auto 0; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }

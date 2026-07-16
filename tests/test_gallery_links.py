@@ -34,6 +34,13 @@ class GalleryLinksTest(unittest.TestCase):
             stylesheet,
         )
 
+    def test_stylesheet_url_busts_immutable_cache(self):
+        expected = 'href="style.css?v=20260716-gallery-links"'
+        for page_name in PAGES:
+            page = (ROOT / page_name).read_text(encoding="utf-8")
+            with self.subTest(page=page_name):
+                self.assertIn(expected, page)
+
     def test_social_media_package_link_is_preserved(self):
         for page_name in PAGES:
             page = (ROOT / page_name).read_text(encoding="utf-8")

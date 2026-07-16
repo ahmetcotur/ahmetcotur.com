@@ -28,12 +28,26 @@
   });
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gsap = reducedMotion ? null : window.gsap;
   const reveals = document.querySelectorAll('.reveal, .project, .brand, .method-step');
+
+  const setProgress = gsap
+    ? gsap.quickTo(progress, 'scaleX', { duration: 0.24, ease: 'power3.out' })
+    : (ratio) => { progress.style.transform = `scaleX(${ratio})`; };
+
+  if (gsap) {
+    gsap.set(progress, { scaleX: 0, transformOrigin: 'left center' });
+    gsap.fromTo(
+      '.site-nav, .hero-bottom',
+      { autoAlpha: 0, y: -18 },
+      { autoAlpha: 1, y: 0, duration: 0.75, ease: 'power3.out', stagger: 0.08, clearProps: 'opacity,visibility,transform' },
+    );
+  }
 
   const updateScroll = () => {
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const ratio = Math.min(1, Math.max(0, window.scrollY / max));
-    progress.style.transform = `scaleX(${ratio})`;
+    setProgress(ratio);
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
     document.body.classList.toggle('scrolled', window.scrollY > 24);
 
@@ -61,6 +75,13 @@
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       entry.target.classList.add('visible');
+      if (gsap) {
+        gsap.fromTo(
+          entry.target,
+          { autoAlpha: 0, y: 54, scale: 0.985, filter: 'blur(10px)' },
+          { autoAlpha: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power3.out', clearProps: 'opacity,visibility,transform,filter' },
+        );
+      }
       updateScroll();
       observer.unobserve(entry.target);
     });

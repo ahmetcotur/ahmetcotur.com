@@ -111,23 +111,20 @@
         <section class="services">
             <h2>Hizmetler</h2>
             <div class="services-grid">
-                <div class="service-item" onclick="openGalleryModal('hotel')">
+                <div class="service-item">
                     <i class="fas fa-camera-retro"></i>
                     <h3>Otel & Villa Fotoğrafçılığı</h3>
                     <p>Kaş, Kalkan, Fethiye, Bodrum ve tüm Akdeniz-Ege bölgesinde profesyonel konaklama fotoğrafçılığı</p>
-                    <button class="view-gallery-btn">Galeriyi Görüntüle</button>
                 </div>
-                <div class="service-item" onclick="openGalleryModal('wedding')">
+                <div class="service-item">
                     <i class="fas fa-heart"></i>
                     <h3>Etkinlik & Düğün Fotoğrafçılığı</h3>
                     <p>Özel anlarınızı ölümsüzleştiren profesyonel fotoğraf ve video hizmetleri</p>
-                    <button class="view-gallery-btn">Galeriyi Görüntüle</button>
                 </div>
-                <div class="service-item" onclick="openGalleryModal('drone')">
+                <div class="service-item">
                     <i class="fas fa-camera"></i>
                     <h3>Drone Çekimleri</h3>
                     <p>Havadan fotoğraf ve video çekimleri ile mülkünüzü veya etkinliğinizi farklı açılardan görüntüleme</p>
-                    <button class="view-gallery-btn">Galeriyi Görüntüle</button>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-bullhorn"></i>
@@ -291,43 +288,6 @@
                     aboutContent.classList.toggle('expanded');
                     this.textContent = aboutContent.classList.contains('expanded') ? 'Daha Az Göster' : 'Devamını Oku';
                 });
-            }
-
-            // Gallery modal functions
-            window.openGalleryModal = function(type) {
-                const galleries = {
-                    hotel: {
-                        title: 'Otel & Villa Fotoğrafları',
-                        url: 'https://drive.google.com/drive/folders/1aCKsUVkypWbUTVLfr0BITQBEZNcHpCza?usp=sharing'
-                    },
-                    wedding: {
-                        title: 'Etkinlik & Düğün Fotoğrafları',
-                        url: 'https://drive.google.com/drive/folders/1EoKikUMYWR2Q50Mkz8Tplnc7UcMQ0Ddi?usp=sharing'
-                    },
-                    drone: {
-                        title: 'Drone Çekimleri',
-                        url: '' // Henüz mevcut değil
-                    }
-                };
-
-                if (galleries[type].url) {
-                    // Yeni sekmede Drive klasörünü aç
-                    window.open(galleries[type].url, '_blank');
-                } else {
-                    alert('Bu galeri yakında eklenecektir.');
-                }
-            }
-
-            window.closeGalleryModal = function() {
-                document.getElementById('galleryModal').style.display = 'none';
-            }
-
-            // Close gallery modal when clicking outside
-            window.onclick = function(event) {
-                const modal = document.getElementById('galleryModal');
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
             }
 
             // Booking Modal Functions

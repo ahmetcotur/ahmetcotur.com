@@ -111,23 +111,20 @@
         <section class="services">
             <h2>Services</h2>
             <div class="services-grid">
-                <div class="service-item" onclick="openGalleryModal('hotel')">
+                <div class="service-item">
                     <i class="fas fa-camera-retro"></i>
                     <h3>Hotel & Villa Photography</h3>
                     <p>Professional accommodation photography throughout the Mediterranean-Aegean region including Kaş, Kalkan, Fethiye, and Bodrum</p>
-                    <button class="view-gallery-btn">View Gallery</button>
                 </div>
-                <div class="service-item" onclick="openGalleryModal('wedding')">
+                <div class="service-item">
                     <i class="fas fa-heart"></i>
                     <h3>Event & Wedding Photography</h3>
                     <p>Professional photo and video services to immortalize your special moments</p>
-                    <button class="view-gallery-btn">View Gallery</button>
                 </div>
-                <div class="service-item" onclick="openGalleryModal('drone')">
+                <div class="service-item">
                     <i class="fas fa-camera"></i>
                     <h3>Drone Photography</h3>
                     <p>Aerial photo and video shots to capture your property or event from different perspectives</p>
-                    <button class="view-gallery-btn">View Gallery</button>
                 </div>
                 <div class="service-item">
                     <i class="fas fa-bullhorn"></i>
@@ -291,43 +288,6 @@
                     aboutContent.classList.toggle('expanded');
                     this.textContent = aboutContent.classList.contains('expanded') ? 'Show Less' : 'Read More';
                 });
-            }
-
-            // Gallery modal functions
-            window.openGalleryModal = function(type) {
-                const galleries = {
-                    hotel: {
-                        title: 'Hotel & Villa Photography',
-                        url: 'https://drive.google.com/drive/folders/1aCKsUVkypWbUTVLfr0BITQBEZNcHpCza?usp=sharing'
-                    },
-                    wedding: {
-                        title: 'Event & Wedding Photography',
-                        url: 'https://drive.google.com/drive/folders/1EoKikUMYWR2Q50Mkz8Tplnc7UcMQ0Ddi?usp=sharing'
-                    },
-                    drone: {
-                        title: 'Drone Photography',
-                        url: '' // Not available yet
-                    }
-                };
-
-                if (galleries[type].url) {
-                    // Open Drive folder in new tab
-                    window.open(galleries[type].url, '_blank');
-                } else {
-                    alert('This gallery will be added soon.');
-                }
-            }
-
-            window.closeGalleryModal = function() {
-                document.getElementById('galleryModal').style.display = 'none';
-            }
-
-            // Close gallery modal when clicking outside
-            window.onclick = function(event) {
-                const modal = document.getElementById('galleryModal');
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
             }
 
             // Booking Modal Functions

@@ -621,11 +621,7 @@ section {
     transform: translateX(3px);
 }
 
-/* Service Item Hover Effect */
-.service-item {
-    cursor: pointer;
-}
-
+/* Service Action Hover Effect */
 .service-item:hover .view-gallery-btn {
     background: var(--primary-dark);
 }
